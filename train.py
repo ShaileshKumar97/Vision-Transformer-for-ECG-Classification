@@ -43,7 +43,7 @@ def train(data_path):
     )
 
     optimizer = tf.keras.optimizers.Adam(0.0001)
-    loss = tf.keras.losses.BinaryCrossentropy(from_logits=True)
+    loss = tf.keras.losses.CategoricalCrossentropy(from_logits=True)
     metrics = [tf.keras.metrics.AUC(from_logits=True, name="roc_auc")]
     vit.compile(optimizer=optimizer, loss=loss, metrics=metrics)
 

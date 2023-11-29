@@ -1,4 +1,4 @@
-# Vistion Transformer for ECG Classification (Super Class)
+# Vision Transformer for ECG Classification (Super Class)
 
 1D vision transformer (vit) for ecg interpretable classification.
 
