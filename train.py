@@ -44,12 +44,15 @@ def train(data_path):
 
     optimizer = tf.keras.optimizers.Adam(0.0001)
     loss = tf.keras.losses.CategoricalCrossentropy(from_logits=True)
-    metrics = [tf.keras.metrics.AUC(from_logits=True, name="roc_auc")]
+    metrics = [
+        tf.keras.metrics.F1Score(average="macro", name="macro_f1_score")
+        # tf.keras.metrics.AUC(from_logits=True, name="roc_auc")
+    ]
     vit.compile(optimizer=optimizer, loss=loss, metrics=metrics)
 
     cbs = [
         tf.keras.callbacks.ModelCheckpoint(
-            "/model-checkpoint/", monitor="val_roc_auc", save_best_only=True, save_weights_only=True
+            "/model-checkpoint/", monitor="macro_f1_score", save_best_only=True, save_weights_only=True
         )
     ]
 
